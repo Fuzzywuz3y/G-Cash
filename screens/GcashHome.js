@@ -1,6 +1,6 @@
 import React from 'react';
-import { ScrollView, StyleSheet, FlatList, Image, TouchableOpacity } from 'react-native';
-import { Text, Icon } from 'react-native-paper';
+import { ScrollView, View, StyleSheet, FlatList, Image, TouchableOpacity } from 'react-native';
+import { Text, Icon, Avatar } from 'react-native-paper';
 import BalanceCard from '../components/BalanceCard';
 
 const SERVICES = [
@@ -31,12 +31,11 @@ export default function GcashHome() {
       <View style={styles.headerContainer}>
         <View style={styles.headerRow}>
           <View style={styles.headerLeft}>
-            <Image
-              source={require('../assets/gcash-logo.png')}
-              style={styles.logo}
-            />
-
-            <Text style={styles.helloText}>Hello!</Text>
+            <Avatar.Icon size={42} icon="account" style={styles.avatar} />
+            <View style={styles.userText}>
+              <Text style={styles.helloText}>Hello,</Text>
+              <Text style={styles.usernameText}>Username</Text>
+            </View>
           </View>
 
           <TouchableOpacity style={styles.helpButton} activeOpacity={0.7}>
@@ -95,7 +94,7 @@ export default function GcashHome() {
         />
       </View>
 
-    </View>
+    </ScrollView>
   );
 }
 
@@ -127,15 +126,21 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 
-  logo: {
-    width: 32,
-    height: 32,
-    marginRight: 20,
-    resizeMode: 'contain',
+  avatar: {
+    backgroundColor: '#0074FF',
+  },
+
+  userText: {
+    marginLeft: 12,
   },
 
   helloText: {
-    fontSize: 22,
+    fontSize: 16,
+    fontWeight: '600',
+  },
+
+  usernameText: {
+    fontSize: 20,
     fontWeight: '700',
   },
 
