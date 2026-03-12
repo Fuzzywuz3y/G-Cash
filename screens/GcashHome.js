@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, FlatList, Image, TouchableOpacity } from 'react-native';
+import { ScrollView, StyleSheet, FlatList, Image, TouchableOpacity } from 'react-native';
 import { Text, Icon } from 'react-native-paper';
 import BalanceCard from '../components/BalanceCard';
 
@@ -25,7 +25,7 @@ const DO_MORE = [
 
 export default function GcashHome() {
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
 
       {/* HEADER */}
       <View style={styles.headerContainer}>
@@ -103,6 +103,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F3F7FB',
+  },
+
+  contentContainer: {
+    paddingBottom: 110,
   },
 
   headerContainer: {
