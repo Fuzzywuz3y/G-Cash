@@ -32,14 +32,17 @@ export default function GcashHome() {
       <View style={styles.headerContainer}>
         <View style={styles.headerRow}>
           <View style={styles.headerLeft}>
-            <Avatar.Icon
-              size={42}
-              icon="account-circle"
-              style={styles.avatar}
+            <Avatar.Image
+            size={42}
+            source={require('../assets/avatar.jpg')}
             />
             <View style={styles.userText}>
-              <Text style={styles.helloText}>Welcome, back!</Text>
-              <Text style={styles.usernameText}>Kathryn</Text>
+              <Text style={[styles.helloText, { color: 'grey' }]}>
+              Welcome, back!
+              </Text>
+              <Text style={styles.usernameText}>
+                Kathryn Villaganas
+                </Text>
             </View>
           </View>
 
@@ -50,7 +53,7 @@ export default function GcashHome() {
       </View>
 
       {/* BALANCE CARD */}
-      <BalanceCard balance="₱ 1,355.00" />
+      <BalanceCard balance="₱ 3,355.00" />
 
       {/* SERVICES CARD */}
       <View style={styles.card}>
