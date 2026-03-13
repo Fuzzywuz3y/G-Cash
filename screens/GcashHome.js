@@ -1,7 +1,8 @@
 import React from 'react';
 import { ScrollView, View, StyleSheet, FlatList, Image, TouchableOpacity } from 'react-native';
-import { Text, Icon, Avatar } from 'react-native-paper';
+import { Text, Icon, Avatar } from 'react-native-paper'; // Avatar.Image will display a profile picture
 import BalanceCard from '../components/BalanceCard';
+
 
 const SERVICES = [
   { id: '1', title: 'Send', icon: 'send' },
@@ -31,10 +32,14 @@ export default function GcashHome() {
       <View style={styles.headerContainer}>
         <View style={styles.headerRow}>
           <View style={styles.headerLeft}>
-            <Avatar.Icon size={42} icon="account" style={styles.avatar} />
+            <Avatar.Icon
+              size={42}
+              icon="account-circle"
+              style={styles.avatar}
+            />
             <View style={styles.userText}>
-              <Text style={styles.helloText}>Hello,</Text>
-              <Text style={styles.usernameText}>Username</Text>
+              <Text style={styles.helloText}>Welcome, back!</Text>
+              <Text style={styles.usernameText}>Kathryn</Text>
             </View>
           </View>
 
@@ -105,7 +110,8 @@ const styles = StyleSheet.create({
   },
 
   contentContainer: {
-    paddingBottom: 110,
+    // no extra bottom padding; avoid blank area above nav
+    paddingBottom: 0,
   },
 
   headerContainer: {
@@ -135,7 +141,7 @@ const styles = StyleSheet.create({
   },
 
   helloText: {
-    fontSize: 16,
+    fontSize: 13,
     fontWeight: '600',
   },
 
@@ -225,6 +231,7 @@ const styles = StyleSheet.create({
 
   banner: {
     margin: 16,
+    marginBottom: 90, // add extra bottom spacing so banner doesn't touch nav when content is short
     borderRadius: 14,
     overflow: 'hidden',
   },

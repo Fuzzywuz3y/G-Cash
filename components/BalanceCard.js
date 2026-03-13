@@ -1,117 +1,56 @@
-import React, { useState } from 'react';
-import { StyleSheet, View, TouchableOpacity } from 'react-native';
-import { Card, Text, Button, IconButton } from 'react-native-paper';
+import React from 'react';
+import { View, StyleSheet, TouchableOpacity } from 'react-native';
+import { Text, Icon } from 'react-native-paper';
 
-export default function BalanceCard({ balance = '₱ 2,269.21', onCashIn }) {
-
-  const [activeTab, setActiveTab] = useState('wallet');
-
+export default function BalanceCard({ balance = '₱ 0.00' }) {
   return (
-    <Card style={styles.card} mode="elevated">
-      <Card.Content>
-
-        
-        {/* AVAILABLE BALANCE */}
-        <View style={styles.topRow}>
-          <Text style={styles.label}>AVAILABLE BALANCE</Text>
-
-          <IconButton
-            icon="eye"
-            size={18}
-            iconColor="#fff"
-            style={styles.eye}
-          />
-        </View>
-
-        {/* BALANCE + CASH IN */}
-        <View style={styles.balanceRow}>
-          <Text style={styles.balance}>
-            {balance}
-          </Text>
-
-          <Button
-            mode="contained"
-            onPress={onCashIn}
-            style={styles.cashInButton}
-            labelStyle={styles.cashInText}
-          >
-            + Cash In
-          </Button>
-        </View>
-
-      </Card.Content>
-    </Card>
+    <View style={styles.container}>
+      <View style={styles.headerRow}>
+        <Text style={styles.label}>AVAILABLE BALANCE</Text>
+        <Icon source="eye" size={20} color="#fff" />
+      </View>
+      <Text style={styles.amount}>{balance}</Text>
+      <TouchableOpacity style={styles.button} activeOpacity={0.8}>
+        <Text style={styles.buttonText}>+ Cash In</Text>
+      </TouchableOpacity>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-
-  card: {
+  container: {
+    backgroundColor: '#0074FF',
+    borderRadius: 12,
+    padding: 16,
     marginHorizontal: 16,
-    marginTop: 10,
-    borderRadius: 10,
-    backgroundColor: '#1972F9',
+    marginTop: 14,
   },
-
-  /* WALLET / SAVINGS */
-  tabs: {
-    flexDirection: 'row',
-    marginBottom: 10,
-  },
-
-  tabText: {
-    color: 'rgba(255,255,255,0.6)',
-    fontSize: 16,
-    marginRight: 20,
+  label: {
+    color: '#fff',
+    fontSize: 12,
     fontWeight: '600',
   },
-
-  activeTab: {
-    color: '#fff',
-    borderBottomWidth: 2,
-    borderBottomColor: '#fff',
-    paddingBottom: 3,
-  },
-
-  topRow: {
+  headerRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    marginBottom: 4,
   },
-
-  label: {
-    color: 'rgba(255,255,255,0.9)',
+  amount: {
+    color: '#fff',
+    fontSize: 26,
     fontWeight: '700',
-    fontSize: 12,
   },
-
-  eye: {
-    margin: 0,
-  },
-
-  balanceRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginTop: 6,
-  },
-
-  balance: {
-    color: '#fff',
-    fontSize: 28,
-    fontWeight: '800',
-  },
-
-  cashInButton: {
-    backgroundColor: '#e4ebf5',
+  button: {
+    marginTop: 12,
+    backgroundColor: '#E0E7FF',
+    alignSelf: 'flex-end',
+    paddingHorizontal: 20,
+    paddingVertical: 8,
     borderRadius: 20,
-    paddingHorizontal: 10,
   },
-
-  cashInText: {
-    fontSize: 13,
+  buttonText: {
+    color: '#0074FF',
     fontWeight: '700',
-    color: '#007CFF',
   },
-
 });
